@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+
+<title>Toy Robot</title>
+<link href='https://fonts.googleapis.com/css?family=Poller+One' rel='stylesheet' type='text/css'>
+<style>
+
+.robot {
+  position: relative;
+  left: 250px;
+}
+.beep{
+  position: relative;
+}
+.beepL{
+  font-family: 'Poller One', verdana, arial, sans-serif;
+  font-size: 150px;
+  color: magenta;
+  float: left;
+}
+.beepR{
+  font-family: 'Poller One', verdana, arial, sans-serif;
+  font-size: 150px;
+  color: magenta;
+}
+@keyframes blink {
+  50% {
+    background: radial-gradient(circle, yellow 10%, transparent 30%), cyan;
+    background-size: 75px 150px;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    background: -webkit-radial-gradient(circle, yellow 10%, transparent 30%), cyan;
+    background-size: 75px 150px;
+  }
+}
+@-moz-keyframes blink {
+  50% {
+    background: -moz-radial-gradient(circle, yellow 10%, transparent 30%), cyan;
+  background-size: 75px 150px;}
+}
+.laser {
+  animation: blink .5s infinite;
+  -webkit-animation: blink .5s infinite;
+  -moz-animation: blink .5s infinite;
+}
+.head {
+  background: radial-gradient(circle, red 10%, transparent 30%), cyan;
+  background: -moz-radial-gradient(circle, red 10%, transparent 30%), cyan;
+  background: -webkit-radial-gradient(circle, red 10%, transparent 30%), cyan;
+  height: 150px;
+  width: 150px;
+  background-size: 75px 150px;
+  border-radius: 60px 60px 10px 10px;
+  border-bottom: 40px solid magenta;
+  position: relative;
+  margin: -48px 0 0 -15px;
+}
+.torso{
+  height: 0;
+  width: 170px;
+  border-bottom: 280px solid cyan;
+  border-left: 55px solid transparent;
+  border-right: 55px solid transparent;
+  border-radius: 100px 100px 20px 20px;
+  position: relative;
+  left: -80px;
+}
+.left {
+  font-family: 'Poller One', verdana, arial, sans-serif;
+  font-size: 200px;
+  color: magenta;
+  transform: rotate(240deg);
+  -webkit-transform: rotate(240deg);
+  -moz-transform: rotate(240deg);
+  position: relative;
+  margin: -45px 0 0 -120px;
+  z-index: -1;
+  float: left;
+}
+.right{
+  font-family: 'Poller One', verdana, arial, sans-serif;
+  font-size: 200px;
+  color: magenta;
+  transform: scaleY(-1) rotate(70deg);
+  -webkit-transform: scaleY(-1) rotate(70deg);
+  -moz-transform: scaleY(-1) rotate(70deg);
+  position: relative;
+  top: -98px;
+  left: 180px;
+  z-index: -1;
+}
+.wheelL{
+  height: 60px;
+  width: 60px;
+  background: cyan;
+  border-radius: 50%;
+  border: 25px solid magenta;
+  position: relative;
+  left: -120px;
+  top: -10px;
+  z-index: -1;
+  float: left;
+}
+.wheelR{
+  height: 60px;
+  width: 60px;
+  background: cyan;
+  border-radius: 50%;
+  border: 25px solid magenta;
+  position: relative;
+  left: 140px;
+  top: -10px;
+  z-index: -1;
+}
+</style>
+
+</head>
+
+<body>
+<div class="robot">
+<div class="beep">
+<div class="beepL">i</div>
+<div class="beepR">i</div>
+</div>
+<div class="head"></div>
+<div class="torso">
+<div class="left">j</div>
+<div class="right">j</div>
+</div>
+<div class="wheelL"></div>
+<div class="wheelR"></div>
+</div>
+<button class="flash button1">laser eyes on/off</button>
+<button class="color button2">change color!</button>
+
+<script>
+$(".flash").click(function() {
+  $(".head").toggleClass('laser');
+});
+$(".color").click(function() {
+
+  var red = Math.floor(Math.random() * 255);
+  console.log(red);
+  var green = Math.floor(Math.random() * 255);
+  var blue = Math.floor(Math.random() * 255);
+  var randomRGBA = 'rgba('+red+','+green+','+blue+',1)';
+  $("body").css("background", randomRGBA);
+   alert(randomRGBA);
+ });
+
+</script>
+</body>
